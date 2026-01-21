@@ -1,14 +1,19 @@
-import adapter from '@sveltejs/adapter-vercel';
-import preprocess from "svelte-preprocess";
+import adapter from '@sveltejs/adapter-static';
+import preprocess from 'svelte-preprocess';
 
 const config = {
   preprocess: preprocess({
     scss: {
-      prependData: `@import './src/app.scss';`
+      prependData: `@use './src/app.scss' as *;`
     }
   }),
+
   kit: {
-    adapter: adapter()
+    adapter: adapter({
+      pages: 'build',
+      assets: 'build',
+      fallback: 'index.html'
+    })
   }
 };
 
