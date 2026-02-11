@@ -1,6 +1,10 @@
 [
   {
     "month": "February 2026",
+    "notes": ["Started making new portfolio website "]
+  },
+  {
+    "month": "February 2026",
     "notes": ["Reached 16000 points in Saleforce"],
     "link": "https://trailhead.salesforce.com/today"
   },
