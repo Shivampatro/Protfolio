@@ -1,23 +1,20 @@
 <main>
   <h1>Hello there! 👋</h1>
   <p class="para">
-    I am a {new Date().getYear() - 104} year old full stack web developer and
-    Linux enthusiast. I do competative programming for fun.
+    I am {new Date().getFullYear() - 2007} year old full stack web developer and data 
+    analyst. I do competative programming as a passion.
   </p>
   <p class="para">
-    I love computers, FOSS, Linux, good humour, history, chicken and my
-    family. I watch a lot of romcoms and enjoy shows like The Office, Suits and Mr.Robot.
+    I love computers, drawing pencil arts , good humour, mythology, biriyani and my
+    family and friends. I watch a lot of mythology movies and enjoy shows like cooking, Shark tank ,etc.
   </p>
   <p class="para">
     I am also tough to describe, atleast i find it hard.
   </p>
   <p class="para">
-    I use <strong>Arch</strong> btw! checkout my
-    <a href="https://github.com/AyushmanTripathy/dots"> dotfiles</a>.
+    I am a good <strong>Artist</strong> btw! checkout my
+    <a href="https://www.instagram.com/_its_me_yash_130/"> Instagram</a>.
   </p>
-  <p> If you want to share a secret, here is my <a href="/public.txt">public key</a> </p>
-
-  <a href="/links">Other good corners of the internet</a>
 </main>
 
 <style lang="scss">

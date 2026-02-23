@@ -48,26 +48,20 @@
 
 <main>
   <img src="/logo.png" alt="logo" />
-  <h1>Ayushman Tripathy</h1>
+  <h1>Shivam Patro</h1>
   <p>
     > {text}
     <span></span>
   </p>
   <section>
-    <a aria-label="Mail" href="mailto:ayushmantripathy2004@gmail.com">
+    <a aria-label="Mail" href="mailto:shivampatro60@gmail.com">
       <Mail />
     </a>
-    <a aria-label="Codechef" target="_blank" href="https://www.codechef.com/users/ayushmantripat">
-      <Codechef />
-    </a>
-    <a aria-label="Github" target="_blank" href="https://github.com/AyushmanTripathy/">
+    <a aria-label="Github" target="_blank" href="https://github.com/Shivampatro/">
       <Github />
     </a>
-    <a aria-label="Linkedin" target="_blank" href="https://www.linkedin.com/in/ayushman-tripathy">
+    <a aria-label="Linkedin" target="_blank" href="https://www.linkedin.com/in/shivam130/">
       <Linkedin />
-    </a>
-    <a aria-label="Hackerrank" target="_blank" href="https://www.hackerrank.com/ayushmantripath3">
-      <Hackerrank />
     </a>
   </section>
 </main>

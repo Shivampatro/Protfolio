@@ -12,8 +12,8 @@
   <Journey />
   <footer>
     <p>
-      made with ❤ and svelte.js by @AyushmanTripathy <br />
-      <a href="https://github.com/AyushmanTripathy/portfolio"> code </a>
+      made with ❤ and svelte.js by @Shivam Patro <br />
+      <a href="https://github.com/Shivampatro/Protfolio"> code </a>
       |
       <a href="https://kit.svelte.dev/"> svelte </a>
       |

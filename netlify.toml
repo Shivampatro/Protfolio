@@ -1,0 +1,8 @@
+[build]
+  # Build the site from the nested `portfolio-release` app directory
+  base = "portfolio-release"
+  command = "npm ci && npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18"

@@ -1,5 +1,21 @@
 {
+  "name": "portfolio-release",
+  "version": "1.0.0",
+  "private": true,
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+
+  "engines": {
+    "node": "18.x"
+  },
+
   "devDependencies": {
-    "rimraf": "^6.1.0"
+    "@sveltejs/adapter-static": "^3.0.1",
+    "rimraf": "^6.1.2",
+    "vite": "^5.0.0"
   }
 }
