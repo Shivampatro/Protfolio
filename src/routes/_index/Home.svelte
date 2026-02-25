@@ -5,16 +5,16 @@
   import Linkedin from "$lib/svgs/Linkedin.svelte";
   import Hackerrank from "$lib/svgs/Hackerrank.svelte";
   import Mail from "$lib/svgs/Mail.svelte";
-  import Salesforce from "$lib/svgs/Salesforce.svelte";
-  import ContactForm from "../_common/ContactForm.svelte";
   import { onMount } from "svelte";
 
   let text = "";
   let arrIndex = 0,
     index = 0,
     done = false;
-  let showForm = false;
-  const strings = ["Hello Friend///////", ...getQuotes()];
+  const strings = [
+    "Hello Friend///////",
+    ...getQuotes(),
+  ];
 
   function write(strs) {
     if (done) {
@@ -54,39 +54,16 @@
     <span></span>
   </p>
   <section>
-    <a
-      aria-label="Mail"
-      href="#contact"
-      on:click|preventDefault={() => (showForm = true)}
-    >
+    <a aria-label="Mail" href="mailto:shivampatro60@gmail.com">
       <Mail />
     </a>
-    <a
-      aria-label="Github"
-      target="_blank"
-      href="https://github.com/Shivampatro/"
-    >
+    <a aria-label="Github" target="_blank" href="https://github.com/Shivampatro/">
       <Github />
     </a>
-    <a
-      aria-label="Linkedin"
-      target="_blank"
-      href="https://www.linkedin.com/in/shivam130/"
-    >
+    <a aria-label="Linkedin" target="_blank" href="https://www.linkedin.com/in/shivam130/">
       <Linkedin />
     </a>
-    <a
-      aria-label="Salesforce"
-      target="_blank"
-      href="https://trailhead.salesforce.com/today"
-    >
-      <Salesforce />
-    </a>
   </section>
-
-  {#if showForm}
-    <ContactForm on:close={() => (showForm = false)} />
-  {/if}
 </main>
 
 <style lang="scss">
