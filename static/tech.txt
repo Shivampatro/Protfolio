@@ -26,4 +26,7 @@
 "https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white",
 "https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white",
 "https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white",
+"https://img.shields.io/badge/Riot_Games-EB0029?style=for-the-badge&logo=riot-games&logoColor=white",
+"https://img.shields.io/badge/Epic_Games-313131?style=for-the-badge&logo=epic-games&logoColor=white",
+"https://img.shields.io/badge/Xbox-107C10?style=for-the-badge&logo=xbox&logoColor=white",
 "https://img.shields.io/badge/NVIDIA-76B900?style=for-the-badge&logo=nvidia&logoColor=white"
