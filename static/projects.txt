@@ -1,17 +1,17 @@
-| pips |
-A functional, dynamically weakly typed, interpreted, indented programming language.
+| MindForge |
+MindForge is an AI framework for building autonomous agents with context-aware reasoning and intelligent knowledge retrieval.
 
-| SuperTic |
-Good old tic tac toe with some twists ;)
+| Student-devlopment-SIH-project |
+The Student Development Platform is a digital system that supports students’ academic, personal, and professional growth in one place.
 
-| UHC |
-The useful html compiler, for when you don't need a javascript framework.
+| Birthdaywish-for-her |
+A virtual birthday wish web page.
 
-| Omnicient |
-One who has answers to all your questions. (provided they are available on google.com)
+| Beach-Safe-India |
+BeachSafe India is a comprehensive digital platform designed to enhance safety for beachgoers by providing real-time weather data, tide information, and emergency assistance.
 
-| logic_gates_simulation |
-To make stupid circuits to your heart's content!!
+| Hospital Readmission Prediction System |
+An ML-based system that predicts patient readmission risk and provides real-time insights using clinical data.
 
-| tik-tac-toe-ai |
-The unbeatable tik tac toe ai using minmax algorithim
+| EduJustice |
+EduJustice is a platform that provide a student legal aid and educational requirements.
