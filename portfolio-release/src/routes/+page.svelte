@@ -3,12 +3,14 @@
   import About from "./_index/About.svelte";
   import Projects from "./_index/Projects.svelte";
   import Tech from "./_index/Tech.svelte";
-  import Journey from "./_index/Journey.svelte"
+  import Journey from "./_index/Journey.svelte";
 </script>
 
 <Home />
 <main>
   <About />
+  <Projects />
+  <Tech />
   <Journey />
   <footer>
     <p>

@@ -2,6 +2,7 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
+  let name = "";
   let email = "";
   let message = "";
   let status = "";
@@ -14,11 +15,12 @@
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, message }),
+        body: JSON.stringify({ name, email, message }),
       });
 
       if (response.ok) {
         status = "Message sent! I will get back to you soon.";
+        name = "";
         email = "";
         message = "";
         setTimeout(() => dispatch("close"), 3000);
@@ -35,6 +37,16 @@
   <div class="modal" on:click|stopPropagation>
     <h2>Connect with me</h2>
     <form on:submit|preventDefault={handleSubmit}>
+      <div class="field">
+        <label for="name">Your Name</label>
+        <input
+          type="text"
+          id="name"
+          bind:value={name}
+          required
+          placeholder="John Doe"
+        />
+      </div>
       <div class="field">
         <label for="email">Your Email</label>
         <input
