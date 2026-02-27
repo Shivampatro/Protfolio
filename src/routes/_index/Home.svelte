@@ -6,6 +6,7 @@
   import Hackerrank from "$lib/svgs/Hackerrank.svelte";
   import Mail from "$lib/svgs/Mail.svelte";
   import Salesforce from "$lib/svgs/Salesforce.svelte";
+  import Resume from "$lib/svgs/Resume.svelte";
   import ContactForm from "../_common/ContactForm.svelte";
   import { onMount } from "svelte";
 
@@ -81,6 +82,13 @@
       href="https://www.salesforce.com/trailblazer/d87hu06bo764lw6a68"
     >
       <Salesforce />
+    </a>
+    <a
+      aria-label="Resume"
+      href="/resume.pdf"
+      download="Shivam_Patro_Resume.pdf"
+    >
+      <Resume />
     </a>
   </section>
 
