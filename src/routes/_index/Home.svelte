@@ -78,7 +78,7 @@
     <a
       aria-label="Salesforce"
       target="_blank"
-      href="https://trailhead.salesforce.com/today"
+      href="https://www.salesforce.com/trailblazer/d87hu06bo764lw6a68"
     >
       <Salesforce />
     </a>
