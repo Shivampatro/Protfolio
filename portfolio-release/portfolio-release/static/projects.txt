@@ -1,0 +1,17 @@
+| MindForge |
+MindForge is an AI framework for building autonomous agents with context-aware reasoning and intelligent knowledge retrieval.
+
+| Student-devlopment-SIH-project |
+The Student Development Platform is a digital system that supports students’ academic, personal, and professional growth in one place.
+
+| MockMate |
+MockMate is an AI-powered mock interview platform that generates interview questions and provides real-time feedback using Google Gemini. Built with Next.js, Clerk, and PostgreSQL, it helps users practice interviews and improve their performance.
+
+| Beach-Safe-India |
+BeachSafe India is a comprehensive digital platform designed to enhance safety for beachgoers by providing real-time weather data, tide information, and emergency assistance.
+
+| Hospital Readmission Prediction System |
+An ML-based system that predicts patient readmission risk and provides real-time insights using clinical data.
+
+| EduJustice |
+EduJustice is a platform that provide a student legal aid and educational requirements.

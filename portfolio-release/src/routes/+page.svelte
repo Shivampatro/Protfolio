@@ -35,6 +35,10 @@
     color: $light;
     padding-top: 100vh;
     pointer-events: none;
+
+    & > :global(*) {
+      pointer-events: auto;
+    }
   }
   footer {
     @include section(fit-content, 100vw);
