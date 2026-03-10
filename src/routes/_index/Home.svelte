@@ -47,6 +47,7 @@
   });
 </script>
 
+<main>
   <div class="bg-noise"></div>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
