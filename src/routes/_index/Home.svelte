@@ -8,6 +8,7 @@
   import Salesforce from "$lib/svgs/Salesforce.svelte";
   import Resume from "$lib/svgs/Resume.svelte";
   import ContactForm from "../_common/ContactForm.svelte";
+  import Galaxy from "$lib/components/Galaxy.svelte";
   import { onMount } from "svelte";
 
   let text = "";
@@ -48,10 +49,21 @@
 </script>
 
 <main>
-  <div class="bg-noise"></div>
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
+  <div class="galaxy-bg">
+    <Galaxy
+      starSpeed={0.5}
+      density={1.4}
+      hueShift={145}
+      speed={1.7}
+      glowIntensity={0.45}
+      saturation={0.45}
+      mouseRepulsion={false}
+      repulsionStrength={2}
+      twinkleIntensity={0.3}
+      rotationSpeed={0.1}
+      transparent
+    />
+  </div>
   <img src="/logo.png" alt="logo" class="animate-fade-up" />
   <h1 class="text-gradient animate-fade-up" style="animation-delay: 0.1s">Shivam Patro</h1>
   <p class="animate-fade-up" style="animation-delay: 0.2s">
@@ -114,54 +126,11 @@
     overflow: hidden;
   }
   
-  .bg-noise {
+  .galaxy-bg {
     position: absolute;
     inset: 0;
-    opacity: 0.05;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
-    pointer-events: none;
-  }
-
-  .orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
     z-index: -1;
-    animation: floating 20s infinite alternate;
-  }
-
-  .orb-1 {
-    width: 400px;
-    height: 400px;
-    background: rgba($hl, 0.3);
-    top: -100px;
-    left: -100px;
-  }
-
-  .orb-2 {
-    width: 300px;
-    height: 300px;
-    background: rgba($acc, 0.2);
-    bottom: -50px;
-    right: -50px;
-    animation-delay: -5s;
-  }
-
-  .orb-3 {
-    width: 250px;
-    height: 250px;
-    background: rgba($hl, 0.15);
-    top: 50%;
-    left: 40%;
-    animation-delay: -10s;
-  }
-
-  @keyframes floating {
-    0% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(30px, 50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0, 0) scale(1); }
+    pointer-events: none;
   }
 
   section {
