@@ -47,14 +47,17 @@
   });
 </script>
 
-<main>
-  <img src="/logo.png" alt="logo" />
-  <h1>Shivam Patro</h1>
-  <p>
+  <div class="bg-noise"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <img src="/logo.png" alt="logo" class="animate-fade-up" />
+  <h1 class="text-gradient animate-fade-up" style="animation-delay: 0.1s">Shivam Patro</h1>
+  <p class="animate-fade-up" style="animation-delay: 0.2s">
     > {text}
     <span></span>
   </p>
-  <section>
+  <section class="glass animate-fade-up" style="animation-delay: 0.3s">
     <a
       aria-label="Mail"
       href="#contact"
@@ -101,42 +104,115 @@
   main {
     @include fullscreen;
     @include fixed(0, 0);
-    @include shadow;
     @include mono;
     @include flex(column);
     @include flex-center;
-    @include cover("/layer.svg");
-
     z-index: 0;
     background-color: $pri;
     color: $light;
+    overflow: hidden;
   }
+  
+  .bg-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Cfilter id='noiseFilter'%3%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3%3C/filter%3%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3%3C/svg%3");
+    pointer-events: none;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    z-index: -1;
+    animation: floating 20s infinite alternate;
+  }
+
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: rgba($hl, 0.3);
+    top: -100px;
+    left: -100px;
+  }
+
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+    background: rgba($acc, 0.2);
+    bottom: -50px;
+    right: -50px;
+    animation-delay: -5s;
+  }
+
+  .orb-3 {
+    width: 250px;
+    height: 250px;
+    background: rgba($hl, 0.15);
+    top: 50%;
+    left: 40%;
+    animation-delay: -10s;
+  }
+
+  @keyframes floating {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, 50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+
   section {
     @include grid(repeat(5, 1fr), 1fr);
-    @include shadow;
+    @include glass;
     align-items: center;
     text-align: center;
-    border-radius: 10px;
     width: 90vw;
     height: 60px;
     max-width: 400px;
-    background-color: $sec;
+    margin-top: 2rem;
+    position: relative;
+    background: rgba(255, 255, 255, 0.05);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(to right, rgba($hl, 0.3), rgba($acc, 0.3));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
   }
+
   img {
-    @include shadow;
+    filter: drop-shadow(0 0 20px rgba($hl, 0.3));
     aspect-ratio: 1;
-    max-width: 200px;
-    width: 40vw;
-    border-radius: 10px;
+    max-width: 180px;
+    width: 35vw;
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
   }
+
   h1 {
-    text-shadow: 3px 5px $tri;
-    font-size: xxx-large;
+    font-size: clamp(2rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
     text-align: center;
   }
+
   p {
     max-width: 90vw;
     text-align: center;
+    color: $dim;
+    font-size: 1.1rem;
+    min-height: 1.6em;
   }
   span {
     border-right: 6px solid $light;

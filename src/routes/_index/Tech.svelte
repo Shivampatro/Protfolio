@@ -33,15 +33,20 @@
 </script>
 
 <main>
-  <h1>Technologies i use,</h1>
-  <p>
-    I use technologies, depending on the work at hand, but some notable ones are
-  </p>
-  <p>
+  <div class="header animate-fade-up">
+    <h1>Technologies i use,</h1>
+    <p>
+      I leverage a diverse set of tools to build scalable and efficient solutions.
+    </p>
+  </div>
+
+  <div class="tech-grid animate-fade-up" style="animation-delay: 0.2s">
     {#each links as link}
-      <img src={link} alt="" />
+      <div class="tech-item glass">
+        <img src={link} alt="" />
+      </div>
     {/each}
-  </p>
+  </div>
 </main>
 
 <style lang="scss">
@@ -54,26 +59,70 @@
     background-color: $pri;
     z-index: $page-index;
     color: $light;
-    padding-bottom: 20px;
+    padding: 10vh 0;
+    position: relative;
   }
-  section {
-    @include section(fit-content, 90vw);
-    @include grid(1fr 1fr 1fr, 1fr);
-    max-width: 500px;
-  }
-  @media screen and (max-width: 500px) {
-    section {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      @include text-gradient;
+    }
+    
+    p {
+      @include para;
+      color: $dim;
     }
   }
-  h2 {
-    text-decoration: underline;
+
+  .tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1000px;
+    padding: 0 2rem;
   }
-  p {
-    @include para;
+
+  .tech-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+
+    &:hover {
+      transform: translateY(-5px) scale(1.05);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba($hl, 0.3);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba($hl, 0.1);
+      
+      img {
+        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+      }
+    }
+
+    img {
+      height: 32px;
+      width: auto;
+      transition: filter 0.3s ease;
+    }
   }
-  div {
-    text-align: center;
+
+  @media screen and (max-width: 600px) {
+    .tech-grid {
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    .tech-item img {
+      height: 24px;
+    }
   }
 </style>

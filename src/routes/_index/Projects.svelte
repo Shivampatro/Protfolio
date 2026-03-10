@@ -13,8 +13,12 @@
 </script>
 
 <main>
-  <h1>Some of my projects.</h1>
-  <section>
+  <div class="header animate-fade-up">
+    <h1>Some of my projects.</h1>
+    <p>A collection of my recent work in web development and data analysis.</p>
+  </div>
+  
+  <section class="animate-fade-up" style="animation-delay: 0.2s">
     {#each titles as title, i}
       <a
         href="https://github.com/Shivampatro/{title
@@ -22,17 +26,17 @@
           .replaceAll(' ', '-')}"
         target="_blank"
         rel="noopener noreferrer"
-        class="project-card"
+        class="project-card premium-card"
       >
         <div class="content">
           <h2>{title.replaceAll(/-|_/g, " ")}</h2>
           <p>{des[i]}</p>
-          <span class="github-link">View on GitHub →</span>
+          <span class="github-link">Source Code →</span>
         </div>
       </a>
     {/each}
   </section>
-  <p class="para">
+  <p class="para animate-fade-up" style="animation-delay: 0.4s">
     More on my
     <a href="https://github.com/Shivampatro/">Github</a>.
   </p>
@@ -61,26 +65,26 @@
     text-decoration: none;
     color: inherit;
     display: block;
-    @include shadow;
-    background-color: $sec;
-    border-radius: 10px;
-    padding: 15px;
+    @include premium-card;
+    padding: 1.5rem;
     cursor: pointer;
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease,
-      border-color 0.3s ease;
-    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
 
-    &:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.4);
-      border-color: $hl;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, transparent 45%, rgba($hl, 0.1) 50%, transparent 55%);
+      transition: all 0.6s ease;
+    }
 
-      .github-link {
-        opacity: 1;
-        color: $hl;
-      }
+    &:hover::before {
+      width: 100%;
+      height: 100%;
     }
   }
   .content {
