@@ -1,0 +1,1 @@
+function u(n){return(n==null?void 0:n.length)!==void 0?n:Array.from(n)}async function p(n){const e=[],f=[];let t=await fetch(n);t=await t.text(),t=t.split("|").map(s=>s.trim()).filter(Boolean);for(let s=0;s<t.length;s++)e.push(t[s]),s++,f.push(t[s].split("+").map(l=>l.trim()).filter(Boolean));return[e,f]}export{u as e,p as l};
