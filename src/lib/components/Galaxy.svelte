@@ -56,20 +56,20 @@ uniform float uSpeed;
 uniform vec2 uMouse;
 uniform float uGlowIntensity;
 uniform float uSaturation;
-uniform bool uMouseRepulsion;
+uniform float uMouseRepulsion;
 uniform float uTwinkleIntensity;
 uniform float uRotationSpeed;
 uniform float uRepulsionStrength;
 uniform float uMouseActiveFactor;
 uniform float uAutoCenterRepulsion;
-uniform bool uTransparent;
+uniform float uTransparent;
 
 varying vec2 vUv;
 
-#define NUM_LAYER 4.0
-#define STAR_COLOR_CUTOFF 0.2
-#define MAT45 mat2(0.7071, -0.7071, 0.7071, 0.7071)
-#define PERIOD 3.0
+const float NUM_LAYER = 4.0;
+const float STAR_COLOR_CUTOFF = 0.2;
+const mat2 MAT45 = mat2(0.7071, -0.7071, 0.7071, 0.7071);
+const float PERIOD = 3.0;
 
 float Hash21(vec2 p) {
   p = fract(p * vec2(123.34, 456.21));
@@ -100,12 +100,12 @@ vec3 hsv2rgb(vec3 c) {
 float Star(vec2 uv, float flare) {
   float d = length(uv);
   float m = (0.05 * uGlowIntensity) / d;
-  float rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
-  m += rays * flare * uGlowIntensity;
-  uv *= MAT45;
-  rays = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
-  m += rays * 0.3 * flare * uGlowIntensity;
-  m *= smoothstep(1.0, 0.2, d);
+  float rays1 = smoothstep(0.0, 1.0, 1.0 - abs(uv.x * uv.y * 1000.0));
+  m += rays1 * flare * uGlowIntensity;
+  vec2 uv2 = uv * MAT45;
+  float rays2 = smoothstep(0.0, 1.0, 1.0 - abs(uv2.x * uv2.y * 1000.0));
+  m += rays2 * 0.3 * flare * uGlowIntensity;
+  m *= 1.0 - smoothstep(0.2, 1.0, d);
   return m;
 }
 
@@ -162,7 +162,7 @@ void main() {
     float centerDist = length(uv - centerUV);
     vec2 repulsion = normalize(uv - centerUV) * (uAutoCenterRepulsion / (centerDist + 0.1));
     uv += repulsion * 0.05;
-  } else if (uMouseRepulsion) {
+  } else if (uMouseRepulsion > 0.5) {
     vec2 mousePosUV = (uMouse * uResolution.xy - focalPx) / uResolution.y;
     float mouseDist = length(uv - mousePosUV);
     vec2 repulsion = normalize(uv - mousePosUV) * (uRepulsionStrength / (mouseDist + 0.1));
@@ -180,14 +180,15 @@ void main() {
 
   vec3 col = vec3(0.0);
 
-  for (float i = 0.0; i < 1.0; i += 1.0 / NUM_LAYER) {
-    float depth = fract(i + uStarSpeed * uSpeed);
-    float scale = mix(20.0 * density, 0.5 * density, depth);
-    float fade = depth * smoothstep(1.0, 0.9, depth);
-    col += StarLayer(uv * scale + i * 453.32) * fade;
+  for (int i = 0; i < 4; i++) {
+    float fi = float(i) / 4.0;
+    float depth = fract(fi + uStarSpeed * uSpeed);
+    float scale = mix(20.0 * uDensity, 0.5 * uDensity, depth);
+    float fade = depth * (1.0 - smoothstep(0.9, 1.0, depth));
+    col += StarLayer(uv * scale + fi * 453.32) * fade;
   }
 
-  if (uTransparent) {
+  if (uTransparent > 0.5) {
     float alpha = length(col);
     alpha = smoothstep(0.0, 0.3, alpha);
     alpha = min(alpha, 1.0);
@@ -260,13 +261,13 @@ void main() {
         },
         uGlowIntensity: { value: glowIntensity },
         uSaturation: { value: saturation },
-        uMouseRepulsion: { value: mouseRepulsion },
+        uMouseRepulsion: { value: mouseRepulsion ? 1.0 : 0.0 },
         uTwinkleIntensity: { value: twinkleIntensity },
         uRotationSpeed: { value: rotationSpeed },
         uRepulsionStrength: { value: repulsionStrength },
         uMouseActiveFactor: { value: 0.0 },
         uAutoCenterRepulsion: { value: autoCenterRepulsion },
-        uTransparent: { value: transparent }
+        uTransparent: { value: transparent ? 1.0 : 0.0 }
       }
     });
 
