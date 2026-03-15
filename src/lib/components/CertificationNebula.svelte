@@ -150,25 +150,39 @@
     });
 </script>
 
-<div class="nebula-wrapper animate-fade-up">
-    <h2>Certifications Star Map</h2>
-    <div bind:this={container} class="nebula-container"></div>
-    <div class="cert-list">
-        {#each certifications as cert}
-            <div class="cert-item" style="--color: {cert.color}">
-                <span class="dot"></span>
-                <span class="name">{cert.name}</span>
-                <span class="date">{cert.date}</span>
-            </div>
-        {/each}
+<section id="certifications">
+    <div class="nebula-wrapper animate-fade-up">
+        <h2>Certifications Star Map</h2>
+        <div bind:this={container} class="nebula-container"></div>
+        <div class="cert-list">
+            {#each certifications as cert}
+                <div class="cert-item" style="--color: {cert.color}">
+                    <span class="dot"></span>
+                    <span class="name">{cert.name}</span>
+                    <span class="date">{cert.date}</span>
+                </div>
+            {/each}
+        </div>
     </div>
-</div>
+</section>
 
 <style lang="scss">
+    section#certifications {
+        width: 100vw;
+        background-color: $pri;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 4rem 0 10rem 0; // Increased bottom padding for parallax translation space
+        position: relative;
+        z-index: 2;
+    }
+
     .nebula-wrapper {
         padding: 1.5rem;
-        margin: 2rem auto 8rem auto; // Increased bottom margin to prevent parallax overlap
+        margin: 0 auto; // Removed huge margins since we have padding on section now
         max-width: 1000px;
+        width: 90vw;
         text-align: center;
         border-radius: 40px;
         background: rgba($pri, 0.95);
