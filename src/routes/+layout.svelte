@@ -1,4 +1,5 @@
 <script>
+  import GalaxyCursor from "$lib/components/GalaxyCursor.svelte";
   import { onMount } from "svelte";
   let scrollFactor;
   onMount(() => {
@@ -29,6 +30,7 @@
     <a href="/blog"> Blogs </a>
   </section>
 </main>
+<GalaxyCursor />
 <div style="width:{scrollFactor * 100}vw;"></div>
 <slot></slot>
 

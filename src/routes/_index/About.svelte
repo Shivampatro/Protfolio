@@ -1,3 +1,8 @@
+<script>
+  import TrailheadStats from "$lib/components/TrailheadStats.svelte";
+  import GithubGraph from "$lib/components/GithubGraph.svelte";
+</script>
+
 <main>
   <div class="about-container glass animate-fade-up">
     <h1>Hello there! 👋</h1>
@@ -14,6 +19,9 @@
       <p>Checkout my <strong>Artist</strong> side on</p>
       <a href="https://www.instagram.com/_its_me_yash_130/" class="insta-link">Instagram →</a>
     </div>
+
+    <TrailheadStats />
+    <GithubGraph />
   </div>
 </main>
 

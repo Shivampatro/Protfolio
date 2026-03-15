@@ -9,6 +9,7 @@
   import Resume from "$lib/svgs/Resume.svelte";
   import ContactForm from "../_common/ContactForm.svelte";
   import Galaxy from "$lib/components/Galaxy.svelte";
+  import InteractiveResume from "$lib/components/InteractiveResume.svelte";
   import { onMount } from "svelte";
 
   let text = "";
@@ -16,6 +17,7 @@
     index = 0,
     done = false;
   let showForm = false;
+  let showResume = false;
   const strings = ["Hello Friend///////", ...getQuotes()];
 
   function write(strs) {
@@ -101,8 +103,8 @@
     </a>
     <a
       aria-label="Resume"
-      href="/resume.pdf"
-      download="Shivam_Patro_Resume.pdf"
+      href="#resume"
+      on:click|preventDefault={() => (showResume = true)}
     >
       <Resume />
     </a>
@@ -110,6 +112,10 @@
 
   {#if showForm}
     <ContactForm on:close={() => (showForm = false)} />
+  {/if}
+
+  {#if showResume}
+    <InteractiveResume on:close={() => (showResume = false)} />
   {/if}
 </main>
 

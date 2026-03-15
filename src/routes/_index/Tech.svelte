@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import load from "$lib/loader.js";
+  
   const links = [
     "https://img.shields.io/badge/Salesforce-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white",
     "https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white",

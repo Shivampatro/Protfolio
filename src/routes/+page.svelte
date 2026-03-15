@@ -4,6 +4,7 @@
   import Projects from "./_index/Projects.svelte";
   import Tech from "./_index/Tech.svelte";
   import Journey from "./_index/Journey.svelte";
+  import CertificationNebula from "$lib/components/CertificationNebula.svelte";
 </script>
 
 <Home />
@@ -11,6 +12,7 @@
   <About />
   <Projects />
   <Tech />
+  <CertificationNebula />
   <Journey />
   <footer>
     <p>
