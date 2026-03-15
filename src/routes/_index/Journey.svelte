@@ -43,6 +43,7 @@
 <style lang="scss">
   main {
     @include section(fit-content,100vw);
+    padding-top: 4rem; // Restored normal padding now that parallax overlap is gone
     @include flex(column);
     @include flex-center;
     @include mono;
@@ -50,7 +51,7 @@
     background-color: $pri;
     pointer-events: auto;
   }
-  section {
+section {
     @include section(fit-content,fit-content);
     background: linear-gradient($tri, $tri) no-repeat center/1px 90%;
   }

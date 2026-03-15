@@ -156,9 +156,11 @@
         <div bind:this={container} class="nebula-container"></div>
         <div class="cert-list">
             {#each certifications as cert}
-                <div class="cert-item" style="--color: {cert.color}">
-                    <span class="dot"></span>
-                    <span class="name">{cert.name}</span>
+                <div class="cert-item" style="--color: {cert.color}; --color-rgb: {cert.color.match(/\w\w/g).map(x=>parseInt(x,16)).join(',')};">
+                    <div class="header-row">
+                        <span class="dot"></span>
+                        <span class="name">{cert.name}</span>
+                    </div>
                     <span class="date">{cert.date}</span>
                 </div>
             {/each}
@@ -173,8 +175,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 0 10rem 0;
-        margin-top: -6rem; // Negative margin to pull it up closer to tech grid
+        padding: 0 0 4rem 0;
         position: relative;
         z-index: 2;
     }
@@ -191,8 +192,6 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         position: relative;
         z-index: 10;
-        transform: translateY(calc(var(--scroll-y, 0px) * 0.05));
-        transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
         h2 { @include text-gradient; margin-bottom: 0.5rem; font-size: 2rem; }
     }
@@ -207,24 +206,60 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1.5rem;
+        gap: 1rem;
+        padding: 0 1rem;
     }
 
     .cert-item {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-        color: $light;
-        padding: 0.5rem 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 100px;
-        transition: all 0.3s ease;
+        justify-content: center;
+        padding: 1.5rem;
+        min-width: 250px;
+        flex: 1 1 250px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--color);
+            opacity: 0.8;
+            box-shadow: 0 0 15px var(--color);
+            transition: height 0.3s ease;
+        }
 
         &:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--color);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(var(--color-rgb, 255, 255, 255), 0.15);
+
+            &::before {
+                height: 6px;
+            }
+
+            .dot {
+                box-shadow: 0 0 15px var(--color), 0 0 30px var(--color);
+            }
+        }
+
+        .header-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            width: 100%;
+            justify-content: center;
         }
 
         .dot {
@@ -233,8 +268,26 @@
             background: var(--color);
             border-radius: 50%;
             box-shadow: 0 0 8px var(--color);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
-        .date { color: $dim; font-size: 0.8rem; }
+        .name { 
+            color: $light;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .date { 
+            color: $dim; 
+            font-size: 0.85rem; 
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            text-align: center;
+        }
     }
 </style>

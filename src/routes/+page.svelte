@@ -10,9 +10,9 @@
 <Home />
 <main>
   <About />
-  <Projects />
   <Tech />
   <CertificationNebula />
+  <Projects />
   <Journey />
   <footer>
     <p>
