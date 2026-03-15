@@ -41,7 +41,7 @@
     @include glass;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
+    width: 100vw;
     height: 5vh;
     color: $light;
     z-index: 100;
