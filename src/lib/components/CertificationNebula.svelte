@@ -173,7 +173,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 0 0 10rem 0; // Removed top padding to pull component up
+        padding: 0 0 10rem 0;
+        margin-top: -6rem; // Negative margin to pull it up closer to tech grid
         position: relative;
         z-index: 2;
     }
