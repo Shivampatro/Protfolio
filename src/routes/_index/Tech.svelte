@@ -59,7 +59,7 @@
     background-color: $pri;
     z-index: $page-index;
     color: $light;
-    padding: 10vh 0;
+    padding: 10vh 0 2vh 0; // Reduced bottom padding to bring certs closer
     position: relative;
   }
 

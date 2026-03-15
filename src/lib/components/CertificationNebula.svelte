@@ -173,7 +173,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 4rem 0 10rem 0; // Increased bottom padding for parallax translation space
+        padding: 0 0 10rem 0; // Removed top padding to pull component up
         position: relative;
         z-index: 2;
     }
