@@ -59,7 +59,7 @@
     background-color: $pri;
     z-index: $page-index;
     color: $light;
-    padding: 10vh 0 2vh 0; // Reduced bottom padding to bring certs closer
+    padding: 10vh 0 0 0; // Removed bottom padding entirely
     position: relative;
   }
 
@@ -84,9 +84,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem; // Reduced gap between items to match screenshot
     max-width: 1000px;
-    padding: 0 2rem;
+    padding: 0 2rem 1rem 2rem; // Minimal bottom padding inside the grid wrapper
   }
 
   .tech-item {
