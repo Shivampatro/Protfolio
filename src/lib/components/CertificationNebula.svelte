@@ -167,7 +167,7 @@
 <style lang="scss">
     .nebula-wrapper {
         padding: 1.5rem;
-        margin: 2rem auto;
+        margin: 2rem auto 8rem auto; // Increased bottom margin to prevent parallax overlap
         max-width: 1000px;
         text-align: center;
         border-radius: 40px;
@@ -176,6 +176,8 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         position: relative;
         z-index: 10;
+        transform: translateY(calc(var(--scroll-y, 0px) * 0.05));
+        transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
         h2 { @include text-gradient; margin-bottom: 0.5rem; font-size: 2rem; }
     }

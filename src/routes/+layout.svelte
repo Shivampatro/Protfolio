@@ -1,27 +1,23 @@
 <script>
   import GalaxyCursor from "$lib/components/GalaxyCursor.svelte";
+  import HyperjumpLoader from "$lib/components/HyperjumpLoader.svelte";
   import { onMount } from "svelte";
-  let scrollFactor;
+  
+  let scrollFactor = 0;
+  let scrollY = 0;
+  
   onMount(() => {
-    /*
-    document.onmousemove = ({ clientX, clientY }) => {
-      const center_x = pointer.offsetLeft + pointer.width / 2;
-      const center_y = pointer.offsetTop + pointer.height / 2;
-      const radians = Math.atan2(clientX - center_x, clientY - center_y);
-      const degree = radians * (180 / Math.PI) * -1 + 90;
-      pointer.style["-moz-transform"] = "rotate(" + degree + "deg)";
-      pointer.style["-webkit-transform"] = "rotate(" + degree + "deg)";
-      pointer.style["-o-transform"] = "rotate(" + degree + "deg)";
-      pointer.style["-ms-transform"] = "rotate(" + degree + "deg)";
-    };
-    */
     document.onscroll = () => {
+      scrollY = window.scrollY;
+      document.body.style.setProperty('--scroll-y', `${scrollY}px`);
       scrollFactor =
-        document.documentElement.scrollTop /
+        scrollY /
         (document.documentElement.scrollHeight - window.screen.height);
     };
   });
 </script>
+
+<HyperjumpLoader duration={2500} />
 
 <main>
   <img id="pointer" src="/pointer.svg" alt="pointer" />
@@ -32,6 +28,7 @@
 </main>
 <GalaxyCursor />
 <div style="width:{scrollFactor * 100}vw;"></div>
+
 <slot></slot>
 
 <style lang="scss">
