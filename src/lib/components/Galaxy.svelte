@@ -222,7 +222,7 @@ void main() {
     if (transparent) {
       gl.enable(gl.BLEND);
       gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-      gl.clearColor(0, 0, 0, 0);
+      gl.clearColor(0, 0, 0, 0); // Keep transparent clearing but we will fix the background color of the container
     } else {
       gl.clearColor(0, 0, 0, 1);
     }

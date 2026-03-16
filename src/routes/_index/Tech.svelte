@@ -1,52 +1,65 @@
 <script>
   import { onMount } from "svelte";
-  
+  import load from "$lib/loader.js";
   const links = [
-    "https://img.shields.io/badge/Salesforce-00A1E0?style=for-the-badge&logo=salesforce&logoColor=white",
-    "https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white",
+    // --- Core Languages (Blues, Yellows) ---
+    "https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white",
+    "https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white",
+    "https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E",
+    "https://img.shields.io/badge/python-%233776AB.svg?style=for-the-badge&logo=python&logoColor=white",
+
+    // --- Web Foundation & Styles (Oranges, Blues, Cyans) ---
+    "https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white",
+    "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white",
+    "https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white",
+    
+    // --- Frameworks & Libraries (Dark, Greens, Light Blue) ---
+    "https://img.shields.io/badge/react-%2320232A.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB",
+    "https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white",
+    "https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white",
+    "https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white",
+
+    // --- Data Science & AI (Purple, White, Greens) ---
+    "https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white",
+    "https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white",
+    "https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black",
+    "https://img.shields.io/badge/nvdia-%2376B900.svg?style=for-the-badge&logo=nvidia&logoColor=white",
+
+    // --- Cloud, Server & Databases (Oranges, Reds, Greens) ---
+    "https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white",
     "https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=white",
-    "https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black",
-    "https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white",
-    "https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white",
-    "https://img.shields.io/badge/Amazon_DynamoDB-4053D6?style=for-the-badge&logo=amazon-dynamodb&logoColor=white",
-    "https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white",
-    "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white",
-    "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black",
-    "https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white",
-    "https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white",
-    "https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white",
-    "https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white",
-    "https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black",
-    "https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white",
-    "https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white",
-    "https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white",
-    "https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white",
-    "https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=apache&logoColor=white",
-    "https://img.shields.io/badge/Apache_Tomcat-F8DC75?style=for-the-badge&logo=apache-tomcat&logoColor=black",
-    "https://img.shields.io/badge/Adobe_Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=black",
-    "https://img.shields.io/badge/Canva-00C4CC?style=for-the-badge&logo=canva&logoColor=white",
-    "https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white",
-    "https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white",
-    "https://img.shields.io/badge/Matplotlib-ffffff?style=for-the-badge&logo=matplotlib&logoColor=black",
-    "https://img.shields.io/badge/NVIDIA-76B900?style=for-the-badge&logo=nvidia&logoColor=white",
+    "https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase",
+    "https://img.shields.io/badge/mysql-%234479A1.svg?style=for-the-badge&logo=mysql&logoColor=white",
+    "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white",
+    "https://img.shields.io/badge/Amazon%20DynamoDB-4053D6?style=for-the-badge&logo=Amazon%20DynamoDB&logoColor=white",
+    "https://img.shields.io/badge/apache-%23D22128.svg?style=for-the-badge&logo=apache&logoColor=white",
+    "https://img.shields.io/badge/apache%20tomcat-%23F8DC75.svg?style=for-the-badge&logo=apache-tomcat&logoColor=black",
+
+    // --- CRM, Design & Dev Tools (Light Blues, Reds, Oranges) ---
+    "https://img.shields.io/badge/salesforce-%2300A1E0.svg?style=for-the-badge&logo=salesforce&logoColor=white",
+    "https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white",
+    "https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white",
+    "https://img.shields.io/badge/adobe-%23FF0000.svg?style=for-the-badge&logo=adobe&logoColor=white",
+    "https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white",
+    "https://img.shields.io/badge/git-%23F05032.svg?style=for-the-badge&logo=git&logoColor=white",
+
+    // --- Gaming / Hobbies (Reds, Blacks, Greens) ---
+    "https://img.shields.io/badge/riotgames-%23D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white",
+    "https://img.shields.io/badge/epicgames-%23313131.svg?style=for-the-badge&logo=epicgames&logoColor=white",
+    "https://img.shields.io/badge/xbox-%23107C10.svg?style=for-the-badge&logo=xbox&logoColor=white"
   ];
 </script>
 
 <main>
-  <div class="header animate-fade-up">
-    <h1>Technologies i use,</h1>
-    <p>
-      I leverage a diverse set of tools to build scalable and efficient solutions.
-    </p>
-  </div>
-
-  <div class="tech-grid animate-fade-up" style="animation-delay: 0.2s">
+  <h1>Technologies i use,</h1>
+  <p> I use technologies, depending on the work at hand, but some notable ones are</p>
+  <p class="tech-container">
     {#each links as link}
-      <div class="tech-item glass">
-        <img src={link} alt="" />
+      <div class="tech-badge">
+        <img src="{link}" alt="Technology Badge">
       </div>
     {/each}
-  </div>
+  </p>
 </main>
 
 <style lang="scss">
@@ -59,70 +72,60 @@
     background-color: $pri;
     z-index: $page-index;
     color: $light;
-    padding: 10vh 0 0 0; // Removed bottom padding entirely
-    position: relative;
+    padding-bottom: 20px;
   }
-
-  .header {
-    text-align: center;
-    margin-bottom: 4rem;
-    
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      @include text-gradient;
-    }
-    
-    p {
-      @include para;
-      color: $dim;
-    }
-  }
-
-  .tech-grid {
+  p.tech-container {
+    @include para;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem; // Reduced gap between items to match screenshot
-    max-width: 1000px;
-    padding: 0 2rem 1rem 2rem; // Minimal bottom padding inside the grid wrapper
+    gap: 12px;
+    margin-top: 30px;
+    padding: 0 10vw;
   }
-
-  .tech-item {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  .tech-badge {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
     position: relative;
-    background: rgba(255, 255, 255, 0.03);
-
-    &:hover {
-      transform: translateY(-5px) scale(1.05);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba($hl, 0.3);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba($hl, 0.1);
-      
-      img {
-        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
-      }
-    }
-
+    border-radius: 4px;
+    
     img {
       height: 32px;
-      width: auto;
-      transition: filter 0.3s ease;
+      border-radius: 4px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+      position: relative;
+      z-index: 2;
     }
-  }
 
-  @media screen and (max-width: 600px) {
-    .tech-grid {
-      gap: 1rem;
-      padding: 0 1rem;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 4px;
+      box-shadow: 0 0 20px 2px rgba(100, 200, 255, 0), /* Inner cyan */
+                  0 0 40px 10px rgba(255, 100, 255, 0);  /* Outer pink nebula */
+      opacity: 0;
+      transition: all 0.5s ease;
+      z-index: 1;
     }
-    .tech-item img {
-      height: 24px;
+
+    &:hover {
+      transform: translateY(-8px) scale(1.15) rotate(1deg);
+      
+      img {
+        filter: brightness(1.2) contrast(1.1);
+      }
+
+      &::after {
+        opacity: 1;
+        box-shadow: 0 0 20px 5px rgba(100, 200, 255, 0.8), /* Inner cyan glow */
+                    0 0 40px 10px rgba(255, 100, 255, 0.4);  /* Outer pink nebula glow */
+      }
     }
   }
 </style>
