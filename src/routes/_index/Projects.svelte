@@ -24,7 +24,8 @@
       <ProjectCard3D 
         title={title} 
         description={des[i]} 
-        link={`https://github.com/Shivampatro/${title.toLowerCase().replaceAll(' ', '-')}`} 
+        link={`https://github.com/Shivampatro/${title.toLowerCase().replaceAll(' ', '-')}`}
+        index={i}
       />
     {/each}
   </section>
