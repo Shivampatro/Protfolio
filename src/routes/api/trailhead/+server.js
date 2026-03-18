@@ -6,14 +6,16 @@ export async function GET() {
     
     const query = `
         query GetTrailheadRank($slug: String, $hasSlug: Boolean!) {
-            profile(slug: $slug, hasSlug: $hasSlug) {
-                trailheadStats {
-                    earnedPointsSum
-                    earnedBadgesCount
-                    completedTrailCount
-                    rank {
-                        title
-                        imageUrl
+            profile(slug: $slug) @include(if: $hasSlug) {
+                ... on PublicProfile {
+                    trailheadStats {
+                        earnedPointsSum
+                        earnedBadgesCount
+                        completedTrailCount
+                        rank {
+                            title
+                            imageUrl
+                        }
                     }
                 }
             }
@@ -23,7 +25,12 @@ export async function GET() {
     try {
         const response = await fetch(graphqlUrl, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'x-idp': 'iis',
+                'Origin': 'https://www.salesforce.com',
+                'Referer': 'https://www.salesforce.com/'
+            },
             body: JSON.stringify({
                 query,
                 variables: { slug, hasSlug: true },
@@ -32,14 +39,24 @@ export async function GET() {
         });
 
         const result = await response.json();
-        const stats = result.data.profile.trailheadStats;
+        
+        if (result.errors) {
+            console.error("GraphQL Errors:", result.errors);
+            throw new Error(result.errors[0].message);
+        }
+
+        const stats = result.data.profile?.trailheadStats;
+
+        if (!stats) {
+            throw new Error("No trailheadStats found in response");
+        }
 
         return json({
             badges: stats.earnedBadgesCount,
             points: stats.earnedPointsSum.toLocaleString(),
             trails: stats.completedTrailCount,
-            rank: stats.rank.title,
-            rankIcon: stats.rank.imageUrl
+            rank: stats.rank?.title || "Unknown",
+            rankIcon: stats.rank?.imageUrl || ""
         });
     } catch (error) {
         console.error("Error fetching Trailhead data:", error);
