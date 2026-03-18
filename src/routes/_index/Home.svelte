@@ -52,19 +52,7 @@
 
 <main>
   <div class="galaxy-bg">
-    <Galaxy
-      starSpeed={0.5}
-      density={1.4}
-      hueShift={145}
-      speed={1.7}
-      glowIntensity={0.45}
-      saturation={0.45}
-      mouseRepulsion={false}
-      repulsionStrength={2}
-      twinkleIntensity={0.3}
-      rotationSpeed={0.1}
-      transparent
-    />
+    <Galaxy />
   </div>
   <img src="/logo.png" alt="logo" class="animate-fade-up" />
   <h1 class="text-gradient animate-fade-up" style="animation-delay: 0.1s">Shivam Patro</h1>
