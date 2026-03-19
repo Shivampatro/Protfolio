@@ -5,7 +5,11 @@
     "date": "2024-03-10",
     "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1200",
     "description": "Implemented secure JWT authentication with a stellar neon UI. The gateway to the cosmos is now secure.",
-    "tech": ["SvelteKit", "Firebase", "TailwindCSS"]
+    "tech": [
+      "SvelteKit",
+      "Firebase",
+      "TailwindCSS"
+    ]
   },
   {
     "id": 2,
@@ -13,7 +17,11 @@
     "date": "2024-03-12",
     "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200",
     "description": "Optimized our API routes to fetch data at the speed of light. Reduced load times by 40%.",
-    "tech": ["Node.js", "Redis", "GraphQL"]
+    "tech": [
+      "Node.js",
+      "Redis",
+      "GraphQL"
+    ]
   },
   {
     "id": 3,
@@ -21,7 +29,11 @@
     "date": "2024-03-14",
     "image": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1200",
     "description": "Designed interactive 3D cards that tilt organically. A breakthrough in user experience metrics.",
-    "tech": ["CSS3D", "Vanilla JS", "GSAP"]
+    "tech": [
+      "CSS3D",
+      "Vanilla JS",
+      "GSAP"
+    ]
   },
   {
     "id": 4,
@@ -29,6 +41,10 @@
     "date": "2024-03-16",
     "image": "https://images.unsplash.com/photo-1549646467-ee24ff5bd87b?auto=format&fit=crop&q=80&w=1200",
     "description": "Successfully migrated the database cluster to a multi-region setup with zero downtime.",
-    "tech": ["AWS", "Docker", "Terraform"]
+    "tech": [
+      "AWS",
+      "Docker",
+      "Terraform"
+    ]
   }
 ]
