@@ -1,6 +1,10 @@
 <script>
   import { onMount } from "svelte";
   import load from "$lib/loader.js";
+  import TechConstellation from "$lib/components/TechConstellation.svelte";
+
+  let showBadges = false;
+
   const links = [
     // --- Core Languages (Blues, Yellows) ---
     "https://img.shields.io/badge/C-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white",
@@ -53,13 +57,22 @@
 <main>
   <h1>Technologies i use,</h1>
   <p> I use technologies, depending on the work at hand, but some notable ones are</p>
-  <p class="tech-container">
-    {#each links as link}
-      <div class="tech-badge">
-        <img src="{link}" alt="Technology Badge">
-      </div>
-    {/each}
-  </p>
+  
+  <TechConstellation />
+
+  <button class="toggle-badges" on:click={() => showBadges = !showBadges}>
+    {showBadges ? 'Hide' : 'Show'} All Badges ↓
+  </button>
+
+  {#if showBadges}
+    <p class="tech-container">
+      {#each links as link}
+        <div class="tech-badge">
+          <img src="{link}" alt="Technology Badge">
+        </div>
+      {/each}
+    </p>
+  {/if}
 </main>
 
 <style lang="scss">
@@ -73,6 +86,25 @@
     z-index: $page-index;
     color: $light;
     padding-bottom: 20px;
+  }
+
+  .toggle-badges {
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    color: $dim;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba($hl, 0.4);
+      color: $hl;
+      box-shadow: 0 0 15px rgba($hl, 0.15);
+    }
   }
   p.tech-container {
     @include para;

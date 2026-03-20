@@ -1,15 +1,15 @@
 <script>
   import { getQuotes } from "$lib/utils.js";
-  import Codechef from "$lib/svgs/Codechef.svelte";
   import Github from "$lib/svgs/Github.svelte";
   import Linkedin from "$lib/svgs/Linkedin.svelte";
-  import Hackerrank from "$lib/svgs/Hackerrank.svelte";
   import Mail from "$lib/svgs/Mail.svelte";
   import Salesforce from "$lib/svgs/Salesforce.svelte";
   import Resume from "$lib/svgs/Resume.svelte";
   import ContactForm from "../_common/ContactForm.svelte";
   import Galaxy from "$lib/components/Galaxy.svelte";
   import InteractiveResume from "$lib/components/InteractiveResume.svelte";
+  import Dock from "$lib/components/Dock.svelte";
+  import FloatingOrb from "$lib/components/FloatingOrb.svelte";
   import { onMount } from "svelte";
 
   let text = "";
@@ -18,6 +18,39 @@
     done = false;
   let showForm = false;
   let showResume = false;
+
+  const dockItems = [
+    {
+      label: "Mail",
+      icon: Mail,
+      onClick: (e) => { e.preventDefault(); showForm = true; },
+      href: "#contact"
+    },
+    {
+      label: "Github",
+      icon: Github,
+      href: "https://github.com/Shivampatro/",
+      target: "_blank"
+    },
+    {
+      label: "Linkedin",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/shivam130/",
+      target: "_blank"
+    },
+    {
+      label: "Salesforce",
+      icon: Salesforce,
+      href: "https://www.salesforce.com/trailblazer/d87hu06bo764lw6a68",
+      target: "_blank"
+    },
+    {
+      label: "Resume",
+      icon: Resume,
+      onClick: (e) => { e.preventDefault(); showResume = true; },
+      href: "#resume"
+    }
+  ];
   const strings = ["Hello Friend///////", ...getQuotes()];
 
   function write(strs) {
@@ -60,43 +93,9 @@
     > {text}
     <span></span>
   </p>
-  <section class="glass animate-fade-up" style="animation-delay: 0.3s">
-    <a
-      aria-label="Mail"
-      href="#contact"
-      on:click|preventDefault={() => (showForm = true)}
-    >
-      <Mail />
-    </a>
-    <a
-      aria-label="Github"
-      target="_blank"
-      href="https://github.com/Shivampatro/"
-    >
-      <Github />
-    </a>
-    <a
-      aria-label="Linkedin"
-      target="_blank"
-      href="https://www.linkedin.com/in/shivam130/"
-    >
-      <Linkedin />
-    </a>
-    <a
-      aria-label="Salesforce"
-      target="_blank"
-      href="https://www.salesforce.com/trailblazer/d87hu06bo764lw6a68"
-    >
-      <Salesforce />
-    </a>
-    <a
-      aria-label="Resume"
-      href="#resume"
-      on:click|preventDefault={() => (showResume = true)}
-    >
-      <Resume />
-    </a>
-  </section>
+  <div class="animate-fade-up" style="animation-delay: 0.3s; margin-top: 2rem;">
+    <Dock items={dockItems} magnification={50} distance={0} />
+  </div>
 
   {#if showForm}
     <ContactForm on:close={() => (showForm = false)} />
@@ -127,32 +126,6 @@
     pointer-events: none;
   }
 
-  section {
-    @include grid(repeat(5, 1fr), 1fr);
-    @include glass;
-    align-items: center;
-    text-align: center;
-    width: 90vw;
-    height: 60px;
-    max-width: 400px;
-    margin-top: 2rem;
-    position: relative;
-    background: rgba(255, 255, 255, 0.05);
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      padding: 1px;
-      background: linear-gradient(to right, rgba($hl, 0.3), rgba($acc, 0.3));
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-  }
 
   img {
     filter: drop-shadow(0 0 20px rgba($hl, 0.3));

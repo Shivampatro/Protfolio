@@ -1,6 +1,7 @@
 <script>
   import GalaxyCursor from "$lib/components/GalaxyCursor.svelte";
   import HyperjumpLoader from "$lib/components/HyperjumpLoader.svelte";
+  import ShootingStars from "$lib/components/ShootingStars.svelte";
   import { onMount } from "svelte";
   
   let scrollFactor = 0;
@@ -28,6 +29,7 @@
   </section>
 </main>
 <GalaxyCursor />
+<ShootingStars />
 <div style="width:{scrollFactor * 100}vw;"></div>
 
 <slot></slot>

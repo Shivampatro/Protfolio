@@ -5,15 +5,36 @@
   import Tech from "./_index/Tech.svelte";
   import Journey from "./_index/Journey.svelte";
   import CertificationNebula from "$lib/components/CertificationNebula.svelte";
+  import ScrollReveal from "$lib/components/ScrollReveal.svelte";
+  import StatsCounter from "$lib/components/StatsCounter.svelte";
 </script>
 
 <Home />
 <main>
-  <About />
-  <Tech />
-  <CertificationNebula />
-  <Projects />
-  <Journey />
+  <ScrollReveal animation="fade-up">
+    <About />
+  </ScrollReveal>
+
+  <ScrollReveal animation="scale-in" delay={100}>
+    <StatsCounter />
+  </ScrollReveal>
+
+  <ScrollReveal animation="fade-up" delay={100}>
+    <Tech />
+  </ScrollReveal>
+
+  <ScrollReveal animation="fade-up" delay={150}>
+    <CertificationNebula />
+  </ScrollReveal>
+
+  <ScrollReveal animation="fade-up" delay={100}>
+    <Projects />
+  </ScrollReveal>
+
+  <ScrollReveal animation="fade-up">
+    <Journey />
+  </ScrollReveal>
+
   <footer>
     <p>
       made with ❤ and svelte.js by @Shivam Patro <br />
@@ -27,6 +48,7 @@
     </p>
   </footer>
 </main>
+
 
 <style lang="scss">
   main {
