@@ -58,7 +58,7 @@
   <h1>Technologies i use,</h1>
   <p> I use technologies, depending on the work at hand, but some notable ones are</p>
   
-  <TechConstellation />
+  <!-- <TechConstellation /> -->
 
   <button class="toggle-badges" on:click={() => showBadges = !showBadges}>
     {showBadges ? 'Hide' : 'Show'} All Badges ↓

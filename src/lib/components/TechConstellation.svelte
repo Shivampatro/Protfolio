@@ -3,45 +3,33 @@
 
   // Define tech nodes with categories and positions
   const techs = [
-    // Core Languages
     { id: 'c', name: 'C', x: 0.12, y: 0.25, color: '#00599C', category: 'lang' },
     { id: 'java', name: 'Java', x: 0.08, y: 0.5, color: '#ED8B00', category: 'lang' },
     { id: 'js', name: 'JavaScript', x: 0.22, y: 0.38, color: '#F7DF1E', category: 'lang' },
     { id: 'python', name: 'Python', x: 0.15, y: 0.7, color: '#3776AB', category: 'lang' },
-
-    // Web Frontend
     { id: 'html', name: 'HTML5', x: 0.32, y: 0.2, color: '#E34F26', category: 'web' },
     { id: 'css', name: 'CSS3', x: 0.38, y: 0.35, color: '#1572B6', category: 'web' },
     { id: 'tailwind', name: 'Tailwind', x: 0.45, y: 0.22, color: '#38B2AC', category: 'web' },
     { id: 'react', name: 'React', x: 0.35, y: 0.52, color: '#61DAFB', category: 'web' },
-
-    // Backend
     { id: 'django', name: 'Django', x: 0.25, y: 0.58, color: '#092E20', category: 'backend' },
     { id: 'flask', name: 'Flask', x: 0.2, y: 0.82, color: '#ffffff', category: 'backend' },
     { id: 'spring', name: 'Spring', x: 0.12, y: 0.88, color: '#6DB33F', category: 'backend' },
-
-    // Data/AI
     { id: 'numpy', name: 'NumPy', x: 0.55, y: 0.65, color: '#013243', category: 'data' },
     { id: 'pandas', name: 'Pandas', x: 0.62, y: 0.52, color: '#150458', category: 'data' },
     { id: 'matplotlib', name: 'Matplotlib', x: 0.58, y: 0.78, color: '#ffffff', category: 'data' },
     { id: 'nvidia', name: 'NVIDIA', x: 0.68, y: 0.7, color: '#76B900', category: 'data' },
-
-    // Cloud/DB
     { id: 'aws', name: 'AWS', x: 0.78, y: 0.25, color: '#FF9900', category: 'cloud' },
     { id: 'oracle', name: 'Oracle', x: 0.85, y: 0.4, color: '#F80000', category: 'cloud' },
     { id: 'firebase', name: 'Firebase', x: 0.72, y: 0.38, color: '#039BE5', category: 'cloud' },
     { id: 'mysql', name: 'MySQL', x: 0.88, y: 0.55, color: '#4479A1', category: 'cloud' },
     { id: 'mongodb', name: 'MongoDB', x: 0.82, y: 0.7, color: '#4ea94b', category: 'cloud' },
     { id: 'dynamodb', name: 'DynamoDB', x: 0.75, y: 0.82, color: '#4053D6', category: 'cloud' },
-
-    // Tools
     { id: 'git', name: 'Git', x: 0.5, y: 0.42, color: '#F05032', category: 'tools' },
     { id: 'github', name: 'GitHub', x: 0.48, y: 0.55, color: '#ffffff', category: 'tools' },
     { id: 'salesforce', name: 'Salesforce', x: 0.65, y: 0.35, color: '#00A1E0', category: 'tools' },
-    { id: 'photoshop', name: 'Photoshop', x: 0.52, y: 0.88, color: '#31A8FF', category: 'tools' },
+    { id: 'photoshop', name: 'Photoshop', x: 0.52, y: 0.88, color: '#31A8FF', category: 'tools' }
   ];
 
-  // Connections between related techs
   const connections = [
     ['js', 'react'], ['js', 'html'], ['js', 'css'],
     ['html', 'css'], ['css', 'tailwind'],
@@ -54,7 +42,7 @@
     ['mongodb', 'dynamodb'],
     ['git', 'github'], ['salesforce', 'oracle'],
     ['react', 'css'], ['django', 'python'],
-    ['flask', 'python'],
+    ['flask', 'python']
   ];
 
   let canvas;
@@ -86,13 +74,14 @@
 
       const isHighlighted = hoveredNode && (hoveredNode.id === fromId || hoveredNode.id === toId);
 
-      ctx.beginPath();
-      ctx.moveTo(p1.x, p1.y);
-      ctx.lineTo(p2.x, p2.y);
       ctx.strokeStyle = isHighlighted
         ? 'rgba(0, 242, 255, 0.5)'
         : 'rgba(100, 150, 200, 0.08)';
       ctx.lineWidth = isHighlighted ? 1.5 : 0.5;
+      
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
       ctx.stroke();
     }
 
@@ -205,6 +194,8 @@
 </div>
 
 <style lang="scss">
+  @import "../../app.scss";
+
   .constellation-container {
     width: 100%;
     max-width: 900px;
