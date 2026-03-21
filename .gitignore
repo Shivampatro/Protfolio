@@ -9,4 +9,6 @@ blogs
 .env.*
 !.env.example
 vite.config.js.timestamp-*
-vite.config.ts.timestamp-*
+vite https://vitejs.dev/config/
+.vercel
+

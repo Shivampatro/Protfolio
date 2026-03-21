@@ -1,1 +1,0 @@
-async function o(i){const l=[],a=[];let t=await fetch(i);t=await t.text(),t=t.split("|").map(e=>e.trim()).filter(Boolean);for(let e=0;e<t.length;e++)l.push(t[e]),e++,a.push(t[e].split("+").map(n=>n.trim()).filter(Boolean));return[l,a]}export{o as l};
