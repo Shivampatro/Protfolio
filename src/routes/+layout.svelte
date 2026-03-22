@@ -18,7 +18,10 @@
   });
 </script>
 
-<HyperjumpLoader duration={2500} />
+  <HyperjumpLoader duration={500} />
+
+
+
 
 <main>
   <img id="pointer" src="/pointer.svg" alt="pointer" />

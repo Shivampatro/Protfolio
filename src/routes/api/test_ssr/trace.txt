@@ -1,0 +1,11 @@
+ReferenceError: window is not defined
+    at eval (C:/Users/shiva/OneDrive/Desktop/portfolio-release/src/lib/components/TechConstellation.svelte:395:3)
+    at run (C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/svelte/src/runtime/internal/utils.js:48:9)
+    at Array.forEach (<anonymous>)
+    at Module.run_all (C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/svelte/src/runtime/internal/utils.js:62:6)
+    at Object.render (C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/svelte/src/runtime/internal/ssr.js:162:26)
+    at GET (C:/Users/shiva/OneDrive/Desktop/portfolio-release/src/routes/api/test_ssr/+server.js:10:56)
+    at eval (C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js:54:4)
+    at AsyncLocalStorage.run (node:internal/async_local_storage/async_hooks:91:14)
+    at Module.with_request_store (file:///C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/@sveltejs/kit/src/exports/internal/event.js:77:20)
+    at Module.render_endpoint (C:/Users/shiva/OneDrive/Desktop/portfolio-release/node_modules/@sveltejs/kit/src/runtime/server/endpoint.js:53:48)

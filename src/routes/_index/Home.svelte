@@ -10,6 +10,8 @@
   import InteractiveResume from "$lib/components/InteractiveResume.svelte";
   import Dock from "$lib/components/Dock.svelte";
   import FloatingOrb from "$lib/components/FloatingOrb.svelte";
+  import SideRail from "$lib/components/SideRail.svelte";
+  import ProfileAvatar from "$lib/components/ProfileAvatar.svelte";
   import { onMount } from "svelte";
 
   let text = "";
@@ -87,14 +89,22 @@
   <div class="galaxy-bg">
     <Galaxy />
   </div>
-  <img src="/logo.png" alt="logo" class="animate-fade-up" />
-  <h1 class="text-gradient animate-fade-up" style="animation-delay: 0.1s">Shivam Patro</h1>
-  <p class="animate-fade-up" style="animation-delay: 0.2s">
-    > {text}
-    <span></span>
-  </p>
-  <div class="animate-fade-up" style="animation-delay: 0.3s; margin-top: 2rem;">
-    <Dock items={dockItems} magnification={50} distance={0} />
+
+
+  <!-- Left Navigation Social Rail -->
+  <SideRail items={dockItems} />
+
+  <!-- Top Right Glowing Profile Widget -->
+  <ProfileAvatar src="/logo.png" />
+
+
+  <!-- Content Group Bottom-Right -->
+  <div class="hero-content animate-fade-up">
+    <h1 class="brush-title">Shivam Patro</h1>
+    <p class="quote">
+      &gt; {text}
+      <span></span>
+    </p>
   </div>
 
   {#if showForm}
@@ -105,6 +115,7 @@
     <InteractiveResume on:close={() => (showResume = false)} />
   {/if}
 </main>
+
 
 <style lang="scss">
   main {
@@ -127,30 +138,48 @@
   }
 
 
-  img {
-    filter: drop-shadow(0 0 20px rgba($hl, 0.3));
-    aspect-ratio: 1;
-    max-width: 180px;
-    width: 35vw;
-    border-radius: 24px;
-    margin-bottom: 1.5rem;
+
+
+  .hero-content {
+    position: absolute;
+    bottom: 4rem;
+    right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 5;
+    text-align: right;
+    max-width: 450px;
+
+    @media only screen and (max-width: 700px) {
+      bottom: 2.5rem;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      align-items: center;
+      text-align: center;
+      max-width: 90vw;
+    }
   }
 
-  h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
-    text-align: center;
+  .brush-title {
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: clamp(3rem, 10vw, 4.5rem);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+    color: #4FB8E6; 
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
   }
 
-  p {
-    max-width: 90vw;
-    text-align: center;
-    color: $dim;
-    font-size: 1.1rem;
-    min-height: 1.6em;
+  p.quote {
+    color: #A0B3CF;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 100%;
+    font-family: 'Source Code Pro', monospace;
+    opacity: 0.85;
   }
+
   span {
     border-right: 6px solid $light;
     animation: 1000ms infinite blink;
