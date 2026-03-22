@@ -180,13 +180,18 @@
     ctx = canvas.getContext('2d');
     handleResize();
     animId = requestAnimationFrame(draw);
-    window.addEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
   });
 
   onDestroy(() => {
     if (animId) cancelAnimationFrame(animId);
-    window.removeEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', handleResize);
+    }
   });
+
 </script>
 
 <div class="constellation-container">
