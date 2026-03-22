@@ -103,8 +103,18 @@
       const baseRadius = isHovered ? 6 : (isConnected ? 5 : 3.5);
       const radius = baseRadius * twinkle;
 
-      // Glow
+      // Ambient Glow for all nodes (Nebula effect)
+      const ambientGlow = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 18);
+      ambientGlow.addColorStop(0, node.color + '18'); // subtle backdrop
+      ambientGlow.addColorStop(1, 'transparent');
+      ctx.fillStyle = ambientGlow;
+      ctx.beginPath();
+      ctx.arc(pos.x, pos.y, 18, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Highlight/Hover Glow
       if (isHovered || isConnected) {
+
         const gradient = ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, 25);
         gradient.addColorStop(0, node.color + '60');
         gradient.addColorStop(1, 'transparent');
@@ -117,7 +127,9 @@
       // Star dot
       ctx.beginPath();
       ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = isHovered ? '#ffffff' : (isConnected ? node.color : `rgba(200, 220, 255, ${twinkle * 0.8})`);
+      const alphaHex = Math.floor(twinkle * 100).toString(16).padStart(2, '0');
+      ctx.fillStyle = isHovered ? '#ffffff' : (isConnected ? node.color : node.color + alphaHex);
+
       ctx.fill();
 
       // Draw name on hover
