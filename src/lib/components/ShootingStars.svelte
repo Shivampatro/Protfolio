@@ -1,11 +1,13 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
+  import { ecoMode } from '../stores.js';
 
   let stars = [];
   let nextId = 0;
   let interval;
 
   function spawnStar() {
+    if ($ecoMode) return;
     const id = nextId++;
     const startX = Math.random() * 60 + 10; // 10-70% from left
     const startY = Math.random() * 40; // 0-40% from top

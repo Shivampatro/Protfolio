@@ -1,4 +1,6 @@
 <script>
+  export let data;
+  export let params = {};
   import Home from "./_index/Home.svelte";
   import About from "./_index/About.svelte";
   import Projects from "./_index/Projects.svelte";

@@ -1,4 +1,6 @@
 <script>
+  export let data;
+  export let params = {};
   import ConstellationGallery from "$lib/components/ConstellationGallery.svelte";
 </script>
 

@@ -1,4 +1,6 @@
 <script>
+  export let data;
+  export let params = {};
   import { onMount } from "svelte";
   let text = "Coming Soon...";
 </script>

@@ -30,7 +30,7 @@
     onMount(async () => {
         if (!browser) return;
 
-        const { Renderer, Camera, Transform, Geometry, Program, Points, Color } = await import('ogl');
+        const { Renderer, Camera, Transform, Geometry, Program, Mesh, Color } = await import('ogl');
 
         const renderer = new Renderer({ alpha: true, antialias: true });
         const gl = renderer.gl;
@@ -119,7 +119,7 @@
             transparent: true,
         });
 
-        const points = new Points(gl, { geometry, program });
+        const points = new Mesh(gl, { geometry, program, mode: gl.POINTS });
         points.setParent(scene);
 
         const resize = () => {

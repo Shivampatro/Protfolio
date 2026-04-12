@@ -1,6 +1,7 @@
 <script>
   import { Renderer, Program, Mesh, Color, Triangle } from 'ogl';
   import { onMount, onDestroy } from 'svelte';
+  import { ecoMode } from '../stores.js';
 
   export let focal = [0.5, 0.5];
   export let rotation = [1.0, 0.0];
@@ -200,9 +201,9 @@ void main() {
 
   // Reactive updates for uniforms
   $: if (program) {
-    program.uniforms.uDensity.value = density;
+    program.uniforms.uDensity.value = $ecoMode ? density * 0.2 : density;
     program.uniforms.uHueShift.value = hueShift;
-    program.uniforms.uSpeed.value = speed;
+    program.uniforms.uSpeed.value = $ecoMode ? speed * 0.2 : speed;
     program.uniforms.uGlowIntensity.value = glowIntensity;
     program.uniforms.uSaturation.value = saturation;
     program.uniforms.uMouseRepulsion.value = mouseRepulsion;

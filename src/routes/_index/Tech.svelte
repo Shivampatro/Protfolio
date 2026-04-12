@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import load from "$lib/loader.js";
   import TechConstellation from "$lib/components/TechConstellation.svelte";
+  import { ecoMode } from "$lib/stores.js";
 
   let showBadges = false;
 
@@ -59,6 +60,27 @@
   <p> I use technologies, depending on the work at hand, but some notable ones are</p>
   
   <TechConstellation />
+
+  <div class="system-widgets">
+    <div class="widget spotify-card glass">
+      <div class="vinyl-record"></div>
+      <div class="track-info">
+        <span class="label">NOW PLAYING (MOCK)</span>
+        <span class="track-name">Stardust (Synthwave)</span>
+        <div class="audio-bars">
+           <i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget eco-card glass" class:active={$ecoMode} on:click={() => $ecoMode = !$ecoMode}>
+       <div class="status-indicator"></div>
+       <div class="info">
+         <span class="label">SYSTEM LOAD</span>
+         <span class="state">{$ecoMode ? 'Eco Mode Active' : 'Hyperdrive Active'}</span>
+       </div>
+    </div>
+  </div>
 
 
   <button class="toggle-badges" on:click={() => showBadges = !showBadges}>
@@ -161,4 +183,97 @@
       }
     }
   }
+
+  /* --- SYSTEM WIDGETS --- */
+  .system-widgets {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .widget {
+    @include glass;
+    display: flex;
+    align-items: center;
+    padding: 15px 25px;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 242, 255, 0.2);
+      border-color: rgba($hl, 0.5);
+    }
+
+    .label {
+      font-size: 0.7rem;
+      color: $dim;
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .track-name, .state {
+      font-size: 1rem;
+      color: $light;
+      font-weight: bold;
+    }
+  }
+
+  /* Spotify */
+  .vinyl-record {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #333 30%, #111 70%);
+    border: 2px solid $dim;
+    animation: spin 4s linear infinite;
+  }
+
+  .audio-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 15px;
+    margin-top: 5px;
+
+    i {
+      width: 3px;
+      background: $hl;
+      animation: bounce 1s infinite alternate ease-in-out;
+      
+      &:nth-child(1) { height: 100%; animation-delay: 0.1s; }
+      &:nth-child(2) { height: 60%; animation-delay: 0.4s; }
+      &:nth-child(3) { height: 80%; animation-delay: 0.2s; }
+      &:nth-child(4) { height: 40%; animation-delay: 0.5s; }
+    }
+  }
+
+  /* Eco */
+  .eco-card {
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: $acc; /* Pink for active/heavy */
+      box-shadow: 0 0 10px $acc;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      .status-indicator {
+        background: #00ffaa; /* Green for eco */
+        box-shadow: 0 0 10px #00ffaa;
+      }
+      .state {
+        color: #00ffaa;
+      }
+    }
+  }
+
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+  @keyframes bounce { 0% { height: 20%; } 100% { height: 100%; } }
+
 </style>
