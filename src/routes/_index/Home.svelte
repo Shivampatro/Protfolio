@@ -12,6 +12,7 @@
   import FloatingOrb from "$lib/components/FloatingOrb.svelte";
   import SideRail from "$lib/components/SideRail.svelte";
   import ProfileAvatar from "$lib/components/ProfileAvatar.svelte";
+  import MilkyWay from "$lib/components/MilkyWay.svelte";
   import { onMount } from "svelte";
 
   let text = "";
@@ -89,6 +90,9 @@
   <div class="galaxy-bg">
     <Galaxy />
   </div>
+
+  <!-- Rotating Milky Way Galaxy -->
+  <MilkyWay />
 
 
   <!-- Left Navigation Social Rail -->
