@@ -92,7 +92,7 @@
 
     <div class="actions">
       <a
-        href="/resume.pdf"
+        href="/shivam%20resume1.pdf"
         download="Shivam_Patro_Resume.pdf"
         class="download-btn">Download PDF</a
       >
