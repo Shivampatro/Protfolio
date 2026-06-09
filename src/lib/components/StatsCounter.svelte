@@ -5,7 +5,7 @@
     { value: 6, suffix: "+", label: "Projects Built" },
     { value: 15, suffix: "+", label: "Certifications" },
     { value: 3, suffix: "+", label: "Years Coding" },
-    { value: 20000, suffix: "+", label: "Salesforce Points" },
+    { value: 30000, suffix: "+", label: "Salesforce Points" },
   ];
 
   let displayValues = stats.map(() => 0);
